@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Property Map – Hybrid Satellite</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  html,body,#map{height:100%;margin:0;padding:0;font-family:sans-serif}
+  .leaflet-popup-content{margin:10px 12px;font-size:13px;line-height:1.45}
+  .leaflet-popup-content b{font-size:14px}
+  .leaflet-popup-content a{color:#1561a5;text-decoration:none;font-weight:500}
+  .leaflet-popup-content a:hover{text-decoration:underline}
+  .src-tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:3px;
+           background:#eee;color:#444;margin-left:4px;vertical-align:1px}
+</style>
+</head><body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const props = [{"name": "US 1 and Cottrell Avenue", "addr": "US 1 and Cottrell Avenue", "city": "Cocoa", "lot": "12.39", "price": 7200000, "lon": -80.7653074, "lat": 28.4668658, "url": "https://www.crexi.com/properties/182681/florida-us-1-and-cottrell-avenue", "source": "Crexi"}, {"name": "Palm Vista Commercial Land", "addr": "Emerson Dr. & St. Johns Heritage Pkwy, Palm Bay FL", "city": "Palm Bay", "lot": "", "price": "", "lon": -80.7369833, "lat": 28.0319963, "url": "https://www.crexi.com/properties/1411291/florida-palm-vista-commercial-land", "source": "Crexi"}, {"name": "75.31 Acres - Columbia Blvd. Titusville", "addr": "Columbia Blvd", "city": "Titusville", "lot": "75.31", "price": 5000000, "lon": -80.82591904883037, "lat": 28.536350496521962, "url": "https://www.crexi.com/properties/1758363/florida-7531-acres---columbia-blvd-titusville", "source": "Crexi"}, {"name": "Space Coast Ocean View Hotel Site Satellite Beach", "addr": "754 Jimmy Buffett Mem Hwy", "city": "Satellite Beach", "lot": "4.75", "price": 8500000, "lon": -80.595727, "lat": 28.194831, "url": "https://www.crexi.com/properties/2461264/florida-space-coast-ocean-view-hotel-site-satellite-beach", "source": "Crexi"}, {"name": "Prime Industrial  Aerospace Development", "addr": "770 Us-1", "city": "Oak Hill", "lot": "132.34", "price": "", "lon": -80.84588252719838, "lat": 28.830082449230545, "url": "https://www.crexi.com/properties/1847820/florida-prime-industrial-aerospace-development", "source": "Crexi"}, {"name": "Acreage on US I-95  Coastal Ln West Melbourne", "addr": "Coastal Lane and US 192", "city": "West Melbourne", "lot": "16.73", "price": 6250000, "lon": -80.703498, "lat": 28.0789474, "url": "https://www.crexi.com/properties/1496623/florida-developable-acreage-on-us-i-95-coastal-ln-west-melbourne", "source": "Crexi"}, {"name": "US 1  Palm Bay, FL", "addr": "3370 Dixie Hwy NE", "city": "Palm Bay", "lot": "21.83", "price": "", "lon": -80.591005, "lat": 28.056533, "url": "https://www.crexi.com/properties/1634388/florida-us-1palm-bay", "source": "Crexi"}, {"name": "Port St. John and Grissom Parkway - 240- Unit Multi-Family", "addr": "Port St. John and Grissom Parkway", "city": "Cocoa", "lot": "20", "price": 5280000, "lon": -80.8044517, "lat": 28.4540006, "url": "https://www.crexi.com/properties/444354/florida-300-unit-multi-family-site", "source": "Crexi"}, {"name": "4.87 Acres For Sale or Lease - 5565 Korbin Avenue, Rockledge", "addr": "5565 Korbin Ave", "city": "Rockledge", "lot": "4.87", "price": "", "lon": -80.69420921587603, "lat": 28.26540492339126, "url": "https://www.crexi.com/properties/2450488/florida-487-acres-for-sale-or-lease---5565-korbin-avenue-rockledge", "source": "Crexi"}, {"name": "I-95  Eau Gallie Blvd SW next to Renninger", "addr": "I-95 and Eau Gallie Blvd S/W", "city": "Melbourne", "lot": "22", "price": 9675000, "lon": -80.7087422, "lat": 28.1203198, "url": "https://www.crexi.com/properties/1544437/florida-i-95-eau-gallie-blvd-sw-next-to-renninger", "source": "Crexi"}, {"name": "Space Coast Ocean View Hotel Site Satellite Beach", "addr": "818 Florida A1A", "city": "Satellite Beach", "lot": "4.75", "price": 10000000, "lon": -80.59511936572987, "lat": 28.19404411742135, "url": "https://www.crexi.com/properties/1412486/florida-space-coast-ocean-view-hotel-site-satellite-beach", "source": "Crexi"}, {"name": "STREAMBOAT LANDING - GATEWAY MEDICAL PROPERTY", "addr": "2930 Kirkland R", "city": "Palm Bay", "lot": "4.15", "price": 6400000, "lon": -80.58182, "lat": 28.040663, "url": "https://www.crexi.com/properties/1738255/florida-streamboat-landing---gateway-medical-property", "source": "Crexi"}, {"name": "Port St John Plaza", "addr": "6201 US Highway 1", "city": "Cocoa", "lot": "", "price": "", "lon": -80.7683271, "lat": 28.4714308, "url": "https://www.crexi.com/properties/1718396/florida-port-st-john-plaza", "source": "Crexi"}, {"name": "Florida Memorial Parkway", "addr": "225, 245, 265 Memorial Parkway", "city": "New Smyrna Beach", "lot": "5.37", "price": "", "lon": -80.984217, "lat": 29.009857, "url": "https://www.crexi.com/properties/1730348/florida-florida-memorial-parkway", "source": "Crexi"}, {"name": "TBA Grissom Pkwy", "addr": "TBA Grissom Pky", "city": "Cocoa", "lot": 16.49, "price": 5350000, "lon": -80.7935, "lat": 28.408, "url": "https://www.loopnet.com/Listing/TBA-Grissom-Pky-Cocoa-FL/38391244/", "source": "LoopNet"}, {"name": "Stadium Pkwy \u2013 Viera Corner Commons", "addr": "Stadium Pky", "city": "Rockledge", "lot": 5.62, "price": 7000000, "lon": -80.726, "lat": 28.2525, "url": "https://www.loopnet.com/Listing/Stadium-Pky-Rockledge-FL/40347687/", "source": "LoopNet"}, {"name": "3865 W New Haven Ave", "addr": "3865 W New Haven Ave", "city": "Melbourne", "lot": 8.87, "price": 9900000, "lon": -80.6675, "lat": 28.081, "url": "https://www.loopnet.com/Listing/3865-W-New-Haven-Ave-Melbourne-FL/38566741/", "source": "LoopNet"}, {"name": "4038 S Babcock St", "addr": "4038 S Babcock St", "city": "Melbourne", "lot": 12.67, "price": 7950000, "lon": -80.6275, "lat": 28.0625, "url": "https://www.loopnet.com/Listing/4038-S-Babcock-St-Melbourne-FL/40284231/", "source": "LoopNet"}];
+const map = L.map('map');
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom:19, attribution:'Imagery © Esri'}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom:19, pane:'overlayPane'}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom:19, pane:'overlayPane'}).addTo(map);
+
+const redIcon = L.divIcon({className:'',html:`
+<svg width="28" height="40" viewBox="0 0 28 40" xmlns="http://www.w3.org/2000/svg">
+  <path d="M14 0 C6 0 0 6 0 14 C0 24 14 40 14 40 C14 40 28 24 28 14 C28 6 22 0 14 0 Z"
+        fill="#D62828" stroke="#7a1414" stroke-width="1"/>
+  <circle cx="14" cy="14" r="4.5" fill="#7a1414"/>
+</svg>`, iconSize:[28,40], iconAnchor:[14,40]});
+
+const fmtPrice = n => n ? '$' + Number(n).toLocaleString() : '';
+const fmtLot   = n => n ? n + ' ac' : '';
+
+const group = L.featureGroup();
+props.forEach(p => {
+  const facts = [fmtLot(p.lot), fmtPrice(p.price)].filter(Boolean).join(' • ');
+  const link  = p.url
+    ? `<a href="${p.url}" target="_blank" rel="noopener">View listing on ${p.source} →</a>`
+    : '';
+  const html  = `
+    <b>${p.name || ''}</b><span class="src-tag">${p.source}</span><br>
+    ${[p.addr, p.city].filter(Boolean).join(', ')}<br>
+    ${facts ? facts + '<br>' : ''}
+    ${link}`;
+  L.marker([p.lat, p.lon], {icon: redIcon}).bindPopup(html, {maxWidth: 280}).addTo(group);
+});
+group.addTo(map);
+map.fitBounds(group.getBounds().pad(0.12));
+</script></body></html>
